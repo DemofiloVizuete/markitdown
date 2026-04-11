@@ -1,41 +1,41 @@
 <!-- BEGIN MICROSOFT SECURITY.MD V0.0.9 BLOCK -->
 
-## Security
+## Seguridad
 
-Microsoft takes the security of our software products and services seriously, which includes all source code repositories managed through our GitHub organizations, which include [Microsoft](https://github.com/Microsoft), [Azure](https://github.com/Azure), [DotNet](https://github.com/dotnet), [AspNet](https://github.com/aspnet) and [Xamarin](https://github.com/xamarin).
+Microsoft se toma muy en serio la seguridad de nuestros productos y servicios de software, lo que incluye todos los repositorios de código fuente administrados a través de nuestras organizaciones de GitHub, como [Microsoft](https://github.com/Microsoft), [Azure](https://github.com/Azure), [DotNet](https://github.com/dotnet), [AspNet](https://github.com/aspnet) y [Xamarin](https://github.com/xamarin).
 
-If you believe you have found a security vulnerability in any Microsoft-owned repository that meets [Microsoft's definition of a security vulnerability](https://aka.ms/security.md/definition), please report it to us as described below.
+Si crees que has encontrado una vulnerabilidad de seguridad en algún repositorio propiedad de Microsoft que cumpla con la [definición de vulnerabilidad de seguridad de Microsoft](https://aka.ms/security.md/definition), repórtala como se describe a continuación.
 
-## Reporting Security Issues
+## Reporte de problemas de seguridad
 
-**Please do not report security vulnerabilities through public GitHub issues.**
+**Por favor, no reportes vulnerabilidades de seguridad mediante issues públicos de GitHub.**
 
-Instead, please report them to the Microsoft Security Response Center (MSRC) at [https://msrc.microsoft.com/create-report](https://aka.ms/security.md/msrc/create-report).
+En su lugar, repórtalas al Microsoft Security Response Center (MSRC) en [https://msrc.microsoft.com/create-report](https://aka.ms/security.md/msrc/create-report).
 
-If you prefer to submit without logging in, send email to [secure@microsoft.com](mailto:secure@microsoft.com).  If possible, encrypt your message with our PGP key; please download it from the [Microsoft Security Response Center PGP Key page](https://aka.ms/security.md/msrc/pgp).
+Si prefieres enviar el reporte sin iniciar sesión, escribe a [secure@microsoft.com](mailto:secure@microsoft.com). Si es posible, cifra tu mensaje con nuestra clave PGP; puedes descargarla desde la [página de clave PGP del Microsoft Security Response Center](https://aka.ms/security.md/msrc/pgp).
 
-You should receive a response within 24 hours. If for some reason you do not, please follow up via email to ensure we received your original message. Additional information can be found at [microsoft.com/msrc](https://www.microsoft.com/msrc). 
+Deberías recibir una respuesta en 24 horas. Si por alguna razón no la recibes, haz seguimiento por correo electrónico para asegurarte de que recibimos tu mensaje original. Puedes encontrar información adicional en [microsoft.com/msrc](https://www.microsoft.com/msrc). 
 
-Please include the requested information listed below (as much as you can provide) to help us better understand the nature and scope of the possible issue:
+Incluye la información solicitada a continuación (todo lo que te sea posible aportar) para ayudarnos a comprender mejor la naturaleza y el alcance del posible problema:
 
-  * Type of issue (e.g. buffer overflow, SQL injection, cross-site scripting, etc.)
-  * Full paths of source file(s) related to the manifestation of the issue
-  * The location of the affected source code (tag/branch/commit or direct URL)
-  * Any special configuration required to reproduce the issue
-  * Step-by-step instructions to reproduce the issue
-  * Proof-of-concept or exploit code (if possible)
-  * Impact of the issue, including how an attacker might exploit the issue
+  * Tipo de problema (por ejemplo: desbordamiento de búfer, inyección SQL, cross-site scripting, etc.)
+  * Rutas completas de los archivos fuente relacionados con la manifestación del problema
+  * Ubicación del código fuente afectado (tag/rama/commit o URL directa)
+  * Cualquier configuración especial necesaria para reproducir el problema
+  * Instrucciones paso a paso para reproducir el problema
+  * Prueba de concepto o código de explotación (si es posible)
+  * Impacto del problema, incluyendo cómo un atacante podría explotarlo
 
-This information will help us triage your report more quickly.
+Esta información nos ayudará a clasificar y priorizar tu reporte con mayor rapidez.
 
-If you are reporting for a bug bounty, more complete reports can contribute to a higher bounty award. Please visit our [Microsoft Bug Bounty Program](https://aka.ms/security.md/msrc/bounty) page for more details about our active programs.
+Si estás reportando para un bug bounty, los reportes más completos pueden contribuir a una recompensa mayor. Visita la página del [Programa de Bug Bounty de Microsoft](https://aka.ms/security.md/msrc/bounty) para más detalles sobre nuestros programas activos.
 
-## Preferred Languages
+## Idiomas preferidos
 
-We prefer all communications to be in English.
+Preferimos que toda la comunicación sea en inglés.
 
-## Policy
+## Política
 
-Microsoft follows the principle of [Coordinated Vulnerability Disclosure](https://aka.ms/security.md/cvd).
+Microsoft sigue el principio de [Divulgación coordinada de vulnerabilidades](https://aka.ms/security.md/cvd).
 
 <!-- END MICROSOFT SECURITY.MD BLOCK -->

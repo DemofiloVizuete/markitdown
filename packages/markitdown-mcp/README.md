@@ -1,66 +1,66 @@
 # MarkItDown-MCP
 
 > [!IMPORTANT]
-> The MarkItDown-MCP package is meant for **local use**, with local trusted agents. In particular, when running the MCP server with Streamable HTTP or SSE, it binds to `localhost` by default, and is not exposed to other machines on the network or Internet. In this configuration, it is meant to be a direct alternative to the STDIO transport, which may be more convenient in some cases. DO NOT bind the server to other interfaces unless you understand the [security implications](#security-considerations) of doing so.
+> El paquete MarkItDown-MCP está pensado para **uso local**, con agentes locales de confianza. En particular, al ejecutar el servidor MCP con Streamable HTTP o SSE, se enlaza por defecto a `localhost` y no queda expuesto a otras máquinas de la red o de Internet. En esta configuración, está pensado como alternativa directa al transporte STDIO, que puede ser más conveniente en algunos casos. NO enlaces el servidor a otras interfaces a menos que entiendas las [implicaciones de seguridad](#consideraciones-de-seguridad) de hacerlo.
 
 
 [![PyPI](https://img.shields.io/pypi/v/markitdown-mcp.svg)](https://pypi.org/project/markitdown-mcp/)
 ![PyPI - Downloads](https://img.shields.io/pypi/dd/markitdown-mcp)
 [![Built by AutoGen Team](https://img.shields.io/badge/Built%20by-AutoGen%20Team-blue)](https://github.com/microsoft/autogen)
 
-The `markitdown-mcp` package provides a lightweight STDIO, Streamable HTTP, and SSE MCP server for calling MarkItDown.
+El paquete `markitdown-mcp` proporciona un servidor MCP ligero en STDIO, Streamable HTTP y SSE para invocar MarkItDown.
 
-It exposes one tool: `convert_to_markdown(uri)`, where uri can be any `http:`, `https:`, `file:`, or `data:` URI.
+Expone una herramienta: `convert_to_markdown(uri)`, donde `uri` puede ser cualquier URI `http:`, `https:`, `file:` o `data:`.
 
-## Installation
+## Instalación
 
-To install the package, use pip:
+Para instalar el paquete, usa pip:
 
 ```bash
 pip install markitdown-mcp
 ```
 
-## Usage
+## Uso
 
-To run the MCP server, using STDIO (default), use the following command:
+Para ejecutar el servidor MCP usando STDIO (por defecto), usa el siguiente comando:
 
 
 ```bash	
 markitdown-mcp
 ```
 
-To run the MCP server, using Streamable HTTP and SSE, use the following command:
+Para ejecutar el servidor MCP usando Streamable HTTP y SSE, usa el siguiente comando:
 
 ```bash	
 markitdown-mcp --http --host 127.0.0.1 --port 3001
 ```
 
-## Running in Docker
+## Ejecución en Docker
 
-To run `markitdown-mcp` in Docker, build the Docker image using the provided Dockerfile:
+Para ejecutar `markitdown-mcp` en Docker, crea la imagen con el Dockerfile incluido:
 ```bash
 docker build -t markitdown-mcp:latest .
 ```
 
-And run it using:
+Y ejecútala con:
 ```bash
 docker run -it --rm markitdown-mcp:latest
 ```
-This will be sufficient for remote URIs. To access local files, you need to mount the local directory into the container. For example, if you want to access files in `/home/user/data`, you can run:
+Esto será suficiente para URIs remotas. Para acceder a archivos locales, necesitas montar el directorio local dentro del contenedor. Por ejemplo, si quieres acceder a archivos en `/home/user/data`, puedes ejecutar:
 
 ```bash
 docker run -it --rm -v /home/user/data:/workdir markitdown-mcp:latest
 ```
 
-Once mounted, all files under data will be accessible under `/workdir` in the container. For example, if you have a file `example.txt` in `/home/user/data`, it will be accessible in the container at `/workdir/example.txt`.
+Una vez montado, todos los archivos de `data` estarán accesibles en `/workdir` dentro del contenedor. Por ejemplo, si tienes un archivo `example.txt` en `/home/user/data`, en el contenedor estará disponible en `/workdir/example.txt`.
 
-## Accessing from Claude Desktop
+## Acceso desde Claude Desktop
 
-It is recommended to use the Docker image when running the MCP server for Claude Desktop.
+Se recomienda usar la imagen Docker al ejecutar el servidor MCP para Claude Desktop.
 
-Follow [these instructions](https://modelcontextprotocol.io/quickstart/user#for-claude-desktop-users) to access Claude's `claude_desktop_config.json` file.
+Sigue [estas instrucciones](https://modelcontextprotocol.io/quickstart/user#for-claude-desktop-users) para acceder al archivo `claude_desktop_config.json` de Claude.
 
-Edit it to include the following JSON entry:
+Edítalo para incluir la siguiente entrada JSON:
 
 ```json
 {
@@ -78,7 +78,7 @@ Edit it to include the following JSON entry:
 }
 ```
 
-If you want to mount a directory, adjust it accordingly:
+Si quieres montar un directorio, ajústalo según corresponda:
 
 ```json
 {
@@ -98,45 +98,45 @@ If you want to mount a directory, adjust it accordingly:
 }
 ```
 
-## Debugging
+## Depuración
 
-To debug the MCP server you can use the `MCP Inspector` tool.
+Para depurar el servidor MCP puedes usar la herramienta `MCP Inspector`.
 
 ```bash
 npx @modelcontextprotocol/inspector
 ```
 
-You can then connect to the inspector through the specified host and port (e.g., `http://localhost:5173/`).
+Luego puedes conectarte al inspector mediante el host y puerto indicados (por ejemplo, `http://localhost:5173/`).
 
-If using STDIO:
-* select `STDIO` as the transport type,
-* input `markitdown-mcp` as the command, and
-* click `Connect`
+Si usas STDIO:
+* selecciona `STDIO` como tipo de transporte,
+* introduce `markitdown-mcp` como comando, y
+* haz clic en `Connect`
 
-If using Streamable HTTP:
-* select `Streamable HTTP` as the transport type,
-* input `http://127.0.0.1:3001/mcp` as the URL, and
-* click `Connect`
+Si usas Streamable HTTP:
+* selecciona `Streamable HTTP` como tipo de transporte,
+* introduce `http://127.0.0.1:3001/mcp` como URL, y
+* haz clic en `Connect`
 
-If using SSE:
-* select `SSE` as the transport type,
-* input `http://127.0.0.1:3001/sse` as the URL, and
-* click `Connect`
+Si usas SSE:
+* selecciona `SSE` como tipo de transporte,
+* introduce `http://127.0.0.1:3001/sse` como URL, y
+* haz clic en `Connect`
 
-Finally:
-* click the `Tools` tab,
-* click `List Tools`,
-* click `convert_to_markdown`, and
-* run the tool on any valid URI.
+Por último:
+* haz clic en la pestaña `Tools`,
+* haz clic en `List Tools`,
+* haz clic en `convert_to_markdown`, y
+* ejecuta la herramienta con cualquier URI válida.
 
-## Security Considerations
+## Consideraciones de seguridad
 
-The server does not support authentication, and runs with the privileges of the user running it. For this reason, when running in SSE or Streamable HTTP mode, the server binds by default to `localhost`. Even still, it is important to recognize that the server can be accessed by any process or users on the same local machine, and that the `convert_to_markdown` tool can be used to read any file that the server's user has access to, or any data from the network. If you require additional security, consider running the server in a sandboxed environment, such as a virtual machine or container, and ensure that the user permissions are properly configured to limit access to sensitive files and network segments. Above all, DO NOT bind the server to other interfaces (non-localhost) unless you understand the security implications of doing so.
+El servidor no admite autenticación y se ejecuta con los privilegios del usuario que lo inicia. Por esta razón, cuando se ejecuta en modo SSE o Streamable HTTP, el servidor se enlaza por defecto a `localhost`. Aun así, es importante reconocer que el servidor puede ser accedido por cualquier proceso o usuario de la misma máquina local, y que la herramienta `convert_to_markdown` puede usarse para leer cualquier archivo al que tenga acceso el usuario del servidor, o datos de la red. Si necesitas seguridad adicional, considera ejecutar el servidor en un entorno aislado, como una máquina virtual o contenedor, y asegúrate de configurar correctamente los permisos de usuario para limitar el acceso a archivos sensibles y segmentos de red. Sobre todo, NO enlaces el servidor a otras interfaces (no localhost) a menos que entiendas las implicaciones de seguridad de hacerlo.
 
-## Trademarks
+## Marcas registradas
 
-This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft
-trademarks or logos is subject to and must follow
-[Microsoft's Trademark & Brand Guidelines](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general).
-Use of Microsoft trademarks or logos in modified versions of this project must not cause confusion or imply Microsoft sponsorship.
-Any use of third-party trademarks or logos are subject to those third-party's policies.
+Este proyecto puede contener marcas registradas o logotipos de proyectos, productos o servicios. El uso autorizado de las
+marcas registradas o logotipos de Microsoft está sujeto a, y debe cumplir, las
+[Directrices de marca y marcas registradas de Microsoft](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general).
+El uso de marcas o logotipos de Microsoft en versiones modificadas de este proyecto no debe causar confusión ni implicar patrocinio de Microsoft.
+Cualquier uso de marcas o logotipos de terceros está sujeto a las políticas de esos terceros.

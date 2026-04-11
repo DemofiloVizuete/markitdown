@@ -1,19 +1,19 @@
 # MarkItDown
 
 > [!IMPORTANT]
-> MarkItDown is a Python package and command-line utility for converting various files to Markdown (e.g., for indexing, text analysis, etc). 
+> MarkItDown es un paquete de Python y una utilidad de línea de comandos para convertir varios tipos de archivos a Markdown (por ejemplo, para indexación, análisis de texto, etc.). 
 >
-> For more information, and full documentation, see the project [README.md](https://github.com/microsoft/markitdown) on GitHub.
+> Para más información y documentación completa, consulta el [README.md](https://github.com/microsoft/markitdown) del proyecto en GitHub.
 
-## Installation
+## Instalación
 
-From PyPI:
+Desde PyPI:
 
 ```bash
 pip install markitdown[all]
 ```
 
-From source:
+Desde código fuente:
 
 ```bash
 git clone git@github.com:microsoft/markitdown.git
@@ -21,15 +21,15 @@ cd markitdown
 pip install -e packages/markitdown[all]
 ```
 
-## Usage
+## Uso
 
-### Command-Line
+### Línea de comandos
 
 ```bash
 markitdown path-to-file.pdf > document.md
 ```
 
-### Python API
+### API de Python
 
 ```python
 from markitdown import MarkItDown
@@ -39,14 +39,14 @@ result = md.convert("test.xlsx")
 print(result.text_content)
 ```
 
-### More Information
+### Más información
 
-For more information, and full documentation, see the project [README.md](https://github.com/microsoft/markitdown) on GitHub.
+Para más información y documentación completa, consulta el [README.md](https://github.com/microsoft/markitdown) del proyecto en GitHub.
 
-## Trademarks
+## Marcas registradas
 
-This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft
-trademarks or logos is subject to and must follow
-[Microsoft's Trademark & Brand Guidelines](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general).
-Use of Microsoft trademarks or logos in modified versions of this project must not cause confusion or imply Microsoft sponsorship.
-Any use of third-party trademarks or logos are subject to those third-party's policies.
+Este proyecto puede contener marcas registradas o logotipos de proyectos, productos o servicios. El uso autorizado de las
+marcas registradas o logotipos de Microsoft está sujeto a, y debe cumplir, las
+[Directrices de marca y marcas registradas de Microsoft](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general).
+El uso de marcas o logotipos de Microsoft en versiones modificadas de este proyecto no debe causar confusión ni implicar patrocinio de Microsoft.
+Cualquier uso de marcas o logotipos de terceros está sujeto a las políticas de esos terceros.

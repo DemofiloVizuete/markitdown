@@ -1,28 +1,28 @@
-# THIRD-PARTY SOFTWARE NOTICES AND INFORMATION
+# AVISOS E INFORMACION DE SOFTWARE DE TERCEROS
 
-**Do Not Translate or Localize**
+**No traducir ni localizar los textos de licencia reproducidos literalmente**
 
-This project incorporates components from the projects listed below. The original copyright notices and the licenses 
-under which MarkItDown received such components are set forth below. MarkItDown reserves all rights not expressly 
-granted herein, whether by implication, estoppel or otherwise.
+Este proyecto incorpora componentes de los proyectos listados a continuacion. Los avisos originales de copyright y las licencias
+bajo las cuales MarkItDown recibio dichos componentes se detallan mas abajo. MarkItDown se reserva todos los derechos no expresamente
+concedidos en este documento, ya sea por implicacion, impedimento legal u otro motivo.
 
 1.dwml (https://github.com/xiilei/dwml)
 
-dwml NOTICES AND INFORMATION BEGIN HERE
+INICIO DE AVISOS E INFORMACION DE dwml
 
 -----------------------------------------
 
-NOTE 1: What follows is a verbatim copy of dwml's LICENSE file, as it appeared on March 28th, 2025 - including 
-placeholders for the copyright owner and year.
+NOTA 1: Lo que sigue es una copia literal del archivo LICENSE de dwml, tal como aparecia el 28 de marzo de 2025,
+incluyendo marcadores de posicion para titular de copyright y ano.
 
-NOTE 2: The Apache License, Version 2.0, requires that modifications to the dwml source code be documented.  
-The following section summarizes these changes. The full details are available in the MarkItDown source code 
-repository under PR #1160 (https://github.com/microsoft/markitdown/pull/1160)
+NOTA 2: La licencia Apache, version 2.0, exige que se documenten las modificaciones al codigo fuente de dwml.
+La siguiente seccion resume esos cambios. Los detalles completos estan disponibles en el repositorio de codigo
+fuente de MarkItDown, en el PR #1160 (https://github.com/microsoft/markitdown/pull/1160)
 
-This project incorporates `dwml/latex_dict.py` and `dwml/omml.py` files without any additional logic modifications (which 
-lives in `packages/markitdown/src/markitdown/converter_utils/docx/math` location). However, we have reformatted the code
-according to `black` code formatter.  From `tests/docx.py` file, we have used `DOCXML_ROOT` XML namespaces and the rest of 
-the file is not used.
+Este proyecto incorpora los archivos `dwml/latex_dict.py` y `dwml/omml.py` sin modificaciones adicionales de logica
+(ubicados en `packages/markitdown/src/markitdown/converter_utils/docx/math`). No obstante, hemos reformateado el codigo
+segun el formateador `black`. Del archivo `tests/docx.py`, hemos utilizado los espacios de nombres XML `DOCXML_ROOT` y el resto
+del archivo no se utiliza.
 
 -----------------------------------------
 
@@ -229,4 +229,4 @@ Apache License
    limitations under the License.
 
 -----------------------------------------
-END OF dwml NOTICES AND INFORMATION
+FIN DE AVISOS E INFORMACION DE dwml

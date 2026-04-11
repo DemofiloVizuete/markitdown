@@ -5,9 +5,9 @@
 [![Built by AutoGen Team](https://img.shields.io/badge/Built%20by-AutoGen%20Team-blue)](https://github.com/microsoft/autogen)
 
 
-This project shows how to create a sample plugin for MarkItDown. The most important parts are as follows:
+Este proyecto muestra cómo crear un plugin de ejemplo para MarkItDown. Las partes más importantes son las siguientes:
 
-Next, implement your custom DocumentConverter:
+A continuación, implementa tu `DocumentConverter` personalizado:
 
 ```python
 from typing import BinaryIO, Any
@@ -62,37 +62,37 @@ def register_converters(markitdown: MarkItDown, **kwargs):
 ```
 
 
-Finally, create an entrypoint in the `pyproject.toml` file:
+Por último, crea un entrypoint en el archivo `pyproject.toml`:
 
 ```toml
 [project.entry-points."markitdown.plugin"]
 sample_plugin = "markitdown_sample_plugin"
 ```
 
-Here, the value of `sample_plugin` can be any key, but should ideally be the name of the plugin. The value is the fully qualified name of the package implementing the plugin.
+Aquí, el valor de `sample_plugin` puede ser cualquier clave, pero idealmente debería ser el nombre del plugin. El valor es el nombre totalmente calificado del paquete que implementa el plugin.
 
 
-## Installation
+## Instalación
 
-To use the plugin with MarkItDown, it must be installed. To install the plugin from the current directory use:
+Para usar el plugin con MarkItDown, debe estar instalado. Para instalarlo desde el directorio actual usa:
 
 ```bash
 pip install -e .
 ```
 
-Once the plugin package is installed, verify that it is available to MarkItDown by running:
+Una vez instalado el paquete del plugin, verifica que esté disponible para MarkItDown ejecutando:
 
 ```bash
 markitdown --list-plugins
 ```
 
-To use the plugin for a conversion use the `--use-plugins` flag. For example, to convert an RTF file:
+Para usar el plugin en una conversión, usa el flag `--use-plugins`. Por ejemplo, para convertir un archivo RTF:
 
 ```bash
 markitdown --use-plugins path-to-file.rtf
 ```
 
-In Python, plugins can be enabled as follows:
+En Python, los plugins se pueden habilitar así:
 
 ```python
 from markitdown import MarkItDown
@@ -102,10 +102,10 @@ result = md.convert("path-to-file.rtf")
 print(result.text_content)
 ```
 
-## Trademarks
+## Marcas registradas
 
-This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft
-trademarks or logos is subject to and must follow
-[Microsoft's Trademark & Brand Guidelines](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general).
-Use of Microsoft trademarks or logos in modified versions of this project must not cause confusion or imply Microsoft sponsorship.
-Any use of third-party trademarks or logos are subject to those third-party's policies.
+Este proyecto puede contener marcas registradas o logotipos de proyectos, productos o servicios. El uso autorizado de las
+marcas registradas o logotipos de Microsoft está sujeto a, y debe cumplir, las
+[Directrices de marca y marcas registradas de Microsoft](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general).
+El uso de marcas o logotipos de Microsoft en versiones modificadas de este proyecto no debe causar confusión ni implicar patrocinio de Microsoft.
+Cualquier uso de marcas o logotipos de terceros está sujeto a las políticas de esos terceros.

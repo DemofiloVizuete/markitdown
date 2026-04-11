@@ -5,76 +5,76 @@ San Francisco, CA 94103
 
 ===================================
 
-Store #0342 - Downtown SF
+Tienda #0342 - Downtown SF
 11/23/2024 14:32:18 PST
 TXN: TXN-98765-2024
-Cashier: Emily Rodriguez
-Register: POS-07
+Cajera: Emily Rodriguez
+Caja: POS-07
 
 -----------------------------------
 
-Wireless Noise-Cancelling
-Headphones - Premium Black
+Auriculares inalambricos con
+cancelacion de ruido - Negro premium
 AUDIO-5521 1 @ $349.99
-Member Discount $-50.00
+Descuento socio $-50.00
 $299.99
-USB-C Hub 7-in-1 Adapter
-with HDMI & Ethernet
+Hub USB-C adaptador 7 en 1
+con HDMI y Ethernet
 ACC-8834 2 @ $79.99
 $159.98
-Portable SSD 2TB
-Thunderbolt 3 Compatible
+SSD portatil 2TB
+Compatible con Thunderbolt 3
 STOR-2241 1 @ $289.00
-Member Discount $-29.00
+Descuento socio $-29.00
 $260.00
-Ergonomic Wireless Mouse
-Rechargeable Battery
+Raton inalambrico ergonomico
+Bateria recargable
 ACC-9012 1 @ $59.99
 $59.99
-Screen Cleaning Kit
-Professional Grade
+Kit de limpieza de pantalla
+Grado profesional
 CARE-1156 3 @ $12.99
 $38.97
-HDMI 2.1 Cable 6ft
-8K Resolution Support
+Cable HDMI 2.1 de 6 pies
+Compatible con resolucion 8K
 CABLE-7789 2 @ $24.99
-Member Discount $-5.00
+Descuento socio $-5.00
 $44.98
 -----------------------------------
 
 SUBTOTAL $863.91
-Member Discount (15%)-$84.00
-Sales Tax (8.5%) $66.23
-Rewards Applied -$25.00
+Descuento socio (15%)-$84.00
+Impuesto de ventas (8.5%) $66.23
+Recompensas aplicadas -$25.00
 ===================================
 TOTAL $821.14
 ===================================
 
-PAYMENT METHOD
+METODO DE PAGO
 Visa Card ending in 4782
 Auth: 847392
 Ref: REF-20241123-98765
 
 -----------------------------------
 
-REWARDS MEMBER
+SOCIA DEL PROGRAMA DE RECOMPENSAS
 Sarah Mitchell
 ID: TM-447821
-Points Earned: 821
-Total Points: 3,247
-Next Reward: $50 gift card
-at 5,000 pts (1,753 to go)
+Puntos obtenidos: 821
+Puntos totales: 3,247
+Proxima recompensa: tarjeta regalo de $50
+al llegar a 5,000 pts (faltan 1,753)
 
 -----------------------------------
 
-RETURN POLICY
-Returns within 30 days
-Receipt required
-Electronics must be unopened
+POLITICA DE DEVOLUCIONES
+Devoluciones dentro de 30 dias
+Se requiere ticket
+Los electronicos deben estar sin abrir
 
 *TXN98765202411231432*
 
-Thank you for shopping!
+Gracias por tu compra
 www.techmart.example.com
 
 ===================================

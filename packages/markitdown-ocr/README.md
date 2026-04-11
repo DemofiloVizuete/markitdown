@@ -1,40 +1,40 @@
 # MarkItDown OCR Plugin
 
-LLM Vision plugin for MarkItDown that extracts text from images embedded in PDF, DOCX, PPTX, and XLSX files.
+Plugin de LLM Vision para MarkItDown que extrae texto de imágenes incrustadas en archivos PDF, DOCX, PPTX y XLSX.
 
-Uses the same `llm_client` / `llm_model` pattern that MarkItDown already supports for image descriptions — no new ML libraries or binary dependencies required.
+Usa el mismo patrón `llm_client` / `llm_model` que MarkItDown ya admite para descripciones de imágenes, sin requerir nuevas bibliotecas de ML ni dependencias binarias.
 
-## Features
+## Características
 
-- **Enhanced PDF Converter**: Extracts text from images within PDFs, with full-page OCR fallback for scanned documents
-- **Enhanced DOCX Converter**: OCR for images in Word documents
-- **Enhanced PPTX Converter**: OCR for images in PowerPoint presentations
-- **Enhanced XLSX Converter**: OCR for images in Excel spreadsheets
-- **Context Preservation**: Maintains document structure and flow when inserting extracted text
+- **Convertidor PDF mejorado**: Extrae texto de imágenes dentro de PDFs, con fallback de OCR de página completa para documentos escaneados
+- **Convertidor DOCX mejorado**: OCR para imágenes en documentos Word
+- **Convertidor PPTX mejorado**: OCR para imágenes en presentaciones PowerPoint
+- **Convertidor XLSX mejorado**: OCR para imágenes en hojas de cálculo Excel
+- **Preservación de contexto**: Mantiene la estructura y el flujo del documento al insertar el texto extraído
 
-## Installation
+## Instalación
 
 ```bash
 pip install markitdown-ocr
 ```
 
-The plugin uses whatever OpenAI-compatible client you already have. Install one if you don't have it yet:
+El plugin usa cualquier cliente compatible con OpenAI que ya tengas. Instala uno si aún no lo tienes:
 
 ```bash
 pip install openai
 ```
 
-## Usage
+## Uso
 
-### Command Line
+### Línea de comandos
 
 ```bash
 markitdown document.pdf --use-plugins --llm-client openai --llm-model gpt-4o
 ```
 
-### Python API
+### API de Python
 
-Pass `llm_client` and `llm_model` to `MarkItDown()` exactly as you would for image descriptions:
+Pasa `llm_client` y `llm_model` a `MarkItDown()` exactamente igual que harías para descripciones de imágenes:
 
 ```python
 from markitdown import MarkItDown
@@ -50,11 +50,11 @@ result = md.convert("document_with_images.pdf")
 print(result.text_content)
 ```
 
-If no `llm_client` is provided the plugin still loads, but OCR is silently skipped — falling back to the standard built-in converter.
+Si no se proporciona `llm_client`, el plugin igualmente se carga, pero el OCR se omite de forma silenciosa y se usa el convertidor estándar integrado.
 
-### Custom Prompt
+### Prompt personalizado
 
-Override the default extraction prompt for specialized documents:
+Sobrescribe el prompt de extracción por defecto para documentos especializados:
 
 ```python
 md = MarkItDown(
@@ -65,9 +65,9 @@ md = MarkItDown(
 )
 ```
 
-### Any OpenAI-Compatible Client
+### Cualquier cliente compatible con OpenAI
 
-Works with any client that follows the OpenAI API:
+Funciona con cualquier cliente que siga la API de OpenAI:
 
 ```python
 from openai import AzureOpenAI
@@ -83,52 +83,52 @@ md = MarkItDown(
 )
 ```
 
-## How It Works
+## Cómo funciona
 
-When `MarkItDown(enable_plugins=True, llm_client=..., llm_model=...)` is called:
+Cuando se llama a `MarkItDown(enable_plugins=True, llm_client=..., llm_model=...)`:
 
-1. MarkItDown discovers the plugin via the `markitdown.plugin` entry point group
-2. It calls `register_converters()`, forwarding all kwargs including `llm_client` and `llm_model`
-3. The plugin creates an `LLMVisionOCRService` from those kwargs
-4. Four OCR-enhanced converters are registered at **priority -1.0** — before the built-in converters at priority 0.0
+1. MarkItDown detecta el plugin mediante el grupo de entry points `markitdown.plugin`
+2. Llama a `register_converters()`, reenviando todos los kwargs, incluidos `llm_client` y `llm_model`
+3. El plugin crea un `LLMVisionOCRService` a partir de esos kwargs
+4. Se registran cuatro convertidores mejorados con OCR con **prioridad -1.0**, antes de los convertidores integrados con prioridad 0.0
 
-When a file is converted:
+Cuando se convierte un archivo:
 
-1. The OCR converter accepts the file
-2. It extracts embedded images from the document
-3. Each image is sent to the LLM with an extraction prompt
-4. The returned text is inserted inline, preserving document structure
-5. If the LLM call fails, conversion continues without that image's text
+1. El convertidor OCR acepta el archivo
+2. Extrae las imágenes incrustadas del documento
+3. Cada imagen se envía al LLM con un prompt de extracción
+4. El texto devuelto se inserta en línea, preservando la estructura del documento
+5. Si falla la llamada al LLM, la conversión continúa sin el texto de esa imagen
 
-## Supported File Formats
+## Formatos de archivo compatibles
 
 ### PDF
 
-- Embedded images are extracted by position (via `page.images` / page XObjects) and OCR'd inline, interleaved with the surrounding text in vertical reading order.
-- **Scanned PDFs** (pages with no extractable text) are detected automatically: each page is rendered at 300 DPI and sent to the LLM as a full-page image.
-- **Malformed PDFs** that pdfplumber/pdfminer cannot open (e.g. truncated EOF) are retried with PyMuPDF page rendering, so content is still recovered.
+- Las imágenes incrustadas se extraen por posición (mediante `page.images` / XObjects de página) y se aplican OCR en línea, intercaladas con el texto circundante en orden vertical de lectura.
+- Los **PDF escaneados** (páginas sin texto extraíble) se detectan automáticamente: cada página se renderiza a 300 DPI y se envía al LLM como imagen de página completa.
+- Los **PDF malformados** que pdfplumber/pdfminer no pueden abrir (por ejemplo, EOF truncado) se reintentan con renderizado de página de PyMuPDF, para recuperar contenido igualmente.
 
 ### DOCX
 
-- Images are extracted via document part relationships (`doc.part.rels`).
-- OCR is run before the DOCX→HTML→Markdown pipeline executes: placeholder tokens are injected into the HTML so that the markdown converter does not escape the OCR markers, and the final placeholders are replaced with the formatted `*[Image OCR]...[End OCR]*` blocks after conversion.
-- Document flow (headings, paragraphs, tables) is fully preserved around the OCR blocks.
+- Las imágenes se extraen mediante relaciones de partes del documento (`doc.part.rels`).
+- El OCR se ejecuta antes del pipeline DOCX→HTML→Markdown: se inyectan tokens de marcador de posición en el HTML para que el convertidor markdown no escape los marcadores OCR, y al final esos placeholders se reemplazan por bloques con formato `*[Image OCR]...[End OCR]*` tras la conversión.
+- El flujo del documento (encabezados, párrafos, tablas) se preserva completamente alrededor de los bloques OCR.
 
 ### PPTX
 
-- Picture shapes, placeholder shapes with images, and images inside groups are all supported.
-- Shapes are processed in top-to-left reading order per slide.
-- If an `llm_client` is configured, the LLM is asked for a description first; OCR is used as the fallback when no description is returned.
+- Se admiten formas de imagen, placeholders con imágenes e imágenes dentro de grupos.
+- Las formas se procesan por diapositiva en orden de lectura de arriba a la izquierda.
+- Si hay un `llm_client` configurado, primero se solicita una descripción al LLM; OCR se usa como fallback cuando no se devuelve descripción.
 
 ### XLSX
 
-- Images embedded in worksheets (`sheet._images`) are extracted per sheet.
-- Cell position is calculated from the image anchor coordinates (column/row → Excel letter notation).
-- Images are listed under a `### Images in this sheet:` section after the sheet's data table — they are not interleaved into the table rows.
+- Las imágenes incrustadas en hojas (`sheet._images`) se extraen por cada hoja.
+- La posición de celda se calcula a partir de las coordenadas del anclaje de imagen (columna/fila → notación de letras de Excel).
+- Las imágenes se listan bajo una sección `### Images in this sheet:` después de la tabla de datos de la hoja; no se intercalan en las filas de la tabla.
 
-### Output format
+### Formato de salida
 
-Every extracted OCR block is wrapped as:
+Cada bloque OCR extraído se envuelve como:
 
 ```text
 *[Image OCR]
@@ -136,11 +136,11 @@ Every extracted OCR block is wrapped as:
 [End OCR]*
 ```
 
-## Troubleshooting
+## Solución de problemas
 
-### OCR text missing from output
+### Falta texto OCR en la salida
 
-The most likely cause is a missing `llm_client` or `llm_model`. Verify:
+La causa más probable es que falte `llm_client` o `llm_model`. Verifica:
 
 ```python
 from openai import OpenAI
@@ -153,28 +153,28 @@ md = MarkItDown(
 )
 ```
 
-### Plugin not loading
+### El plugin no carga
 
-Confirm the plugin is installed and discovered:
+Confirma que el plugin está instalado y detectado:
 
 ```bash
 markitdown --list-plugins   # should show: ocr
 ```
 
-### API errors
+### Errores de API
 
-The plugin propagates LLM API errors as warnings and continues conversion. Check your API key, quota, and that the chosen model supports vision inputs.
+El plugin propaga los errores de la API del LLM como advertencias y continúa la conversión. Comprueba tu API key, cuota y que el modelo elegido soporte entradas de visión.
 
-## Development
+## Desarrollo
 
-### Running Tests
+### Ejecutar pruebas
 
 ```bash
 cd packages/markitdown-ocr
 pytest tests/ -v
 ```
 
-### Building from Source
+### Compilar desde código fuente
 
 ```bash
 git clone https://github.com/microsoft/markitdown.git
@@ -182,19 +182,19 @@ cd markitdown/packages/markitdown-ocr
 pip install -e .
 ```
 
-## Contributing
+## Contribuir
 
-Contributions are welcome! See the [MarkItDown repository](https://github.com/microsoft/markitdown) for guidelines.
+Las contribuciones son bienvenidas. Consulta el [repositorio de MarkItDown](https://github.com/microsoft/markitdown) para ver las guías.
 
-## License
+## Licencia
 
-MIT — see [LICENSE](LICENSE).
+MIT. Consulta [LICENSE](LICENSE).
 
-## Changelog
+## Registro de cambios
 
-### 0.1.0 (Initial Release)
+### 0.1.0 (Versión inicial)
 
-- LLM Vision OCR for PDF, DOCX, PPTX, XLSX
-- Full-page OCR fallback for scanned PDFs
-- Context-aware inline text insertion
-- Priority-based converter replacement (no code changes required)
+- OCR con LLM Vision para PDF, DOCX, PPTX y XLSX
+- Fallback de OCR de página completa para PDFs escaneados
+- Inserción de texto en línea con preservación de contexto
+- Reemplazo de convertidores basado en prioridad (sin cambios de código requeridos)
